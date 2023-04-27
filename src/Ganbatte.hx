@@ -1,3 +1,4 @@
+import sys.FileSystem;
 import engine.PageCreator;
 import states.LessonState;
 import engine.State;
@@ -13,22 +14,19 @@ class Ganbatte extends Application {
 		trace("Debug mode");
 		#end
 
-		var s = new LessonState("");	
-		var p = new PageCreator(s);	
-		p.createComponents([{
-			name: 'Button',
-			attributes: [
-				'x' => 20,
-				'y' => 20,
-				'scaleX' => 1,
-				'scaleY' => 1
-			],
-			innerData: "Press me!",
-			instance: null
-		}]);
+		stage.window.onClose.add(onClose);
 
 		var label = new Label();
 		label.text = "Hello World";
 		addChild(label);
+	}
+
+	function onClose() {
+		for (f in FileSystem.readDirectory("assets/cache")) {
+			if (FileSystem.isDirectory("assets/cache/"+f))
+				FileSystem.deleteDirectory("assets/cache/"+f);
+			else
+				FileSystem.deleteFile("assets/cache/"+f);
+		}
 	}
 }

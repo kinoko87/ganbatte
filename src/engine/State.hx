@@ -6,7 +6,7 @@ import openfl.display.DisplayObject;
 abstract class State {
     public static var currentState:State;
     public var id:String;
-    public var children:Array<DisplayObject>;
+    public var children:Array<DisplayObject> = [];
     
     public function new(id:String) {
         this.id = id;

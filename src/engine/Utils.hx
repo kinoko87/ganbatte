@@ -1,5 +1,7 @@
 package engine;
 
+import feathers.controls.Application;
+
 class Utils {
     public static function parseString(s:String):Dynamic {
         var intEreg:EReg= ~/^-?\d+$/;
@@ -14,5 +16,9 @@ class Utils {
         } else {
             return s;
         }
+    }
+
+    public static function changeTitle(nt:String) {
+        Application.topLevelApplication.stage.window.title = nt;
     }
 }
