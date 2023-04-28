@@ -27,10 +27,10 @@ class GLArchive {
             }
         }
 
-        FileSystem.createDirectory("assets/cache/"+cacheFileName);
+        FileSystem.createDirectory("cache/"+cacheFileName);
 
         for (e in entries) {
-            var p = "assets/cache/"+cacheFileName+"/";
+            var p = "cache/"+cacheFileName+"/";
             File.saveContent(p+e.fileName, e.data.toString());
         }
     }
@@ -55,7 +55,7 @@ class GLFolder {
         }
 
         for (e in entries) {
-            var p = "assets/cache"+cacheFileName+"/";
+            var p = "cache"+cacheFileName+"/";
             File.saveContent(p+e, File.getContent(p+e));
         }
     }
@@ -63,5 +63,5 @@ class GLFolder {
 
 class GFiles {
     public static inline function getLessonFile(dir:String):GLesson
-       return FileSystem.exists('assets/cache'+dir+'/lesson.json') ? cast (Json.parse(File.getContent('assets/cache/'+dir+'/lesson.json'))) : null;
+       return FileSystem.exists('cache'+dir+'/lesson.json') ? cast (Json.parse(File.getContent('cache/'+dir+'/lesson.json'))) : null;
 }

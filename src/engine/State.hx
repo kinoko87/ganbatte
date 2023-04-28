@@ -31,6 +31,12 @@ abstract class State {
             f(c);
     }
 
+    public function switchState(s:State) {
+        forEach(remove);
+        Ganbatte.state = s;
+        s.create();
+    }
+
     public function free() {
         for (c in children) {
             children.remove(c);
